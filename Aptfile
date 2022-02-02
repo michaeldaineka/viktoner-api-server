@@ -1,0 +1,1 @@
+make git zlib1g-dev libssl-dev gperf cmake g++
