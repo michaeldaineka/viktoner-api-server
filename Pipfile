@@ -36,6 +36,10 @@ PyYAML = "==6.0"
 sqlalchemy = "*"
 alembic = "*"
 databases = "*"
+passlib = "*"
+python-jose = "*"
+email-validator = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

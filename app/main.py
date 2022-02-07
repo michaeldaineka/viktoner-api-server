@@ -1,13 +1,16 @@
 from fastapi import FastAPI
 from aiogram import types, Dispatcher, Bot
 from bot import dp, bot, TOKEN
+from app.api.api_v1.api import api_router
+from app.core.config import settings
 import uvicorn
 
 
 app = FastAPI()
 WEBHOOK_PATH = f"/bot/{TOKEN}"
-WEBHOOK_URL = "https://05e5-178-124-178-56.ngrok.io" + WEBHOOK_PATH
+WEBHOOK_URL = "https://29d5-178-124-178-56.ngrok.io" + WEBHOOK_PATH
 
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.on_event("startup")
 async def on_startup():
@@ -33,4 +36,4 @@ async def on_shutdown():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
