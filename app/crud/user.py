@@ -1,6 +1,7 @@
 from typing import Any, Dict, Optional, Union
 
 from sqlalchemy.orm import Session
+from app.db.session import SessionLocal
 
 from app.core.security import get_password_hash, verify_password
 from app.crud.base import CRUDBase
@@ -9,10 +10,10 @@ from app.schemas.user import UserCreate, UserUpdate
 
 
 class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
-    def get_by_id(self, db: Session | None, *, user_id: int) -> Optional[User]:
+    def get_by_id(self, db: Session = SessionLocal(), *, user_id: int) -> Optional[User]:
         return db.query(User).filter(User.id == user_id).first()
 
-    def create(self, db: Session, *, obj_in: UserCreate) -> User:
+    def create(self, db: Session = SessionLocal(), *, obj_in: UserCreate) -> User:
         db_obj = User(
             id=obj_in.id,
             first_name=obj_in.first_name,

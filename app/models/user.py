@@ -12,4 +12,5 @@ class User(Base):
     first_name = Column(String, index=True)
     last_name = Column(String, index=True)
     username = Column(String, unique=True, nullable=False)
+    money = Column(Integer, default=0)
     is_superuser = Column(Boolean(), default=False)
