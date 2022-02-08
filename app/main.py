@@ -8,7 +8,7 @@ import uvicorn
 
 app = FastAPI()
 WEBHOOK_PATH = f"/bot/{TOKEN}"
-WEBHOOK_URL = "https://ff3d-178-124-178-56.ngrok.io" + WEBHOOK_PATH
+WEBHOOK_URL = "https://04b2-178-124-178-56.ngrok.io" + WEBHOOK_PATH
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
